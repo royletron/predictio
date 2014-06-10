@@ -8,7 +8,7 @@ Fixtures.allow({
       return true;
   },
   update: function (userId, fixture, fields, modifier) {
-    return false;
+    return true;
   },
   remove: function (userId, fixture) {
     return false;
@@ -32,6 +32,11 @@ Predictions.allow({
     if(prediction.fixture.closed)
       return false;
 
+    var fixture = Fixture.findOne({_id: prediction.fixture});
+    if(fixture != undefined)
+      if(moment(this.play_at).add('hours', 17) > moment())
+        return false;
+      
     return true;
   },
   remove: function(userId, prediction) {

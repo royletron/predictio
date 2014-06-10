@@ -9,11 +9,40 @@ Template.fixtures.prediction_home = function(fixture) {
     return ''
 }
 
+Template.fixtures.fixture_open = function(event){
+  if(moment(this.play_at).add('hours', 17) < moment())
+    return 'disabled'
+}
+
+Template.fixtures.play_at_ago = function(){
+  return moment(this.play_at).add('hours', 17).fromNow();
+}
+
 Template.fixtures.prediction_away = function(fixture) {
   if(Predictions.findOne({owner: Meteor.userId(), fixture: fixture}) != undefined)
     return Predictions.findOne({owner: Meteor.userId(), fixture: fixture}).away_score
   else
     return ''
+}
+
+Template.fixtures.prediction_win = function(fixture, side) {
+  var prediction = Predictions.findOne({owner: Meteor.userId(), fixture: fixture});
+  if(prediction != undefined)
+  {
+    if(prediction.home_score == prediction.away_score)
+      return 'label label-warning'
+    if(side == 'home')
+      if(prediction.home_score > prediction.away_score)
+        return 'label label-success'
+    if(side == 'away')
+      if(prediction.away_score > prediction.home_score)
+        return 'label label-success'
+    return 'label label-danger'
+  }
+  else
+  {
+    return ''
+  }
 }
 
 Template.fixtures.getAlpha2Code = function(alpha3, name) {
@@ -54,6 +83,7 @@ Template.fixtures.events({
         $home.parent().removeClass('has-error')
         $away.parent().removeClass('has-error')
       }
-    })
+    });
+    toastr.success('Saved your predictions.')
   }
 })

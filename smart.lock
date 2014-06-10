@@ -5,7 +5,9 @@
       "bootstrap-3": {},
       "accounts-ui-bootstrap-3": {},
       "iron-router": {},
-      "flag-sprites": {}
+      "flag-sprites": {},
+      "momentjs": {},
+      "toastr": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -27,6 +29,16 @@
         "git": "https://github.com/chrismbeckett/meteor-flag-sprites.git",
         "tag": "v1.0.0",
         "commit": "da0c33dab5d580dcfb1dde9904dd19920020886b"
+      },
+      "momentjs": {
+        "git": "https://github.com/crapthings/meteor-momentjs.git",
+        "tag": "v2.1.0.2",
+        "commit": "59a762e297082eea8b8cae00374c2b7ac6f89529"
+      },
+      "toastr": {
+        "git": "https://github.com/chrismbeckett/meteor-toastr.git",
+        "tag": "v0.1.0",
+        "commit": "476ed73ebbdb09e69ee22034e52d35b777602ec5"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

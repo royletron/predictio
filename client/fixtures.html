@@ -5,27 +5,27 @@
   {{#each fixtures}}
   <div class="row" style="margin-bottom:10px;">
     <div class="col-xs-4 col-sm-3 text-right">
-      {{team1_title}}
+      <span class="{{prediction_win _id 'home'}}">{{team1_title}}</span>
       <img src="/packages/flag-sprites/flags/blank.gif" class="flag flag-{{getAlpha2Code team1_code team1_title}}" alt="{{team1_title}}" />
     </div>
     <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 text-center">
       <div class="row" style="margin-top:-4px;">
         <div class="col-sm-5">
-          <input class="form-control input-sm" id="{{_id}}_home" value="{{prediction_home _id}}" />
+          <input class="form-control input-sm" {{fixture_open}} id="{{_id}}_home" value="{{prediction_home _id}}" />
         </div>
         <div class="col-sm-2 hidden-xs">
           <strong>vs</strong>
         </div>
         <div class="col-sm-5">
-          <input class="form-control input-sm" id="{{_id}}_away" value="{{prediction_away _id}}" />
+          <input class="form-control input-sm {{fixture_open}}" {{fixture_open}} id="{{_id}}_away" value="{{prediction_away _id}}" />
         </div>
       </div>
     </div>
     <div class="col-xs-4 col-sm-3 text-left">
       <img src="/packages/flag-sprites/flags/blank.gif" class="flag flag-{{getAlpha2Code team2_code team2_title}}" alt="{{team2_title}}" />
-      {{team2_title}}
+      <span class="{{prediction_win _id 'away'}}">{{team2_title}}</span>
     </div>
-    <div class="col-sm-1"><p class="muted">{{play_at}}</p></div>
+    <div class="col-sm-2"><p class="muted">{{play_at_ago}}</p></div>
   </div>
   {{/each}}
   <a id="saveButton" class="btn btn-primary">Save</a>
