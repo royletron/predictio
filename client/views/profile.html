@@ -1,0 +1,21 @@
+<template name='profile'>
+  <div class="page-header">
+    <h1>Ur Profilez</h1>
+  </div>
+  <div class="row">
+    <div class="col col-lg-12">
+      <div class="form-group">
+        <label>Email</label>
+        <input class="form-control" type="email" id="email" placeholder="Email" value="{{email}}">
+        <span class='errors'></span>
+      </div>
+      <div class="form-group">
+        <label>Display Name</label>
+        <input class="form-control" type="text" id="displayName" placeholder="Display Name" value="{{displayName}}">
+        <span class='errors'></span>
+      </div>
+      <hr />
+      <a class='btn btn-primary done'><i class='icon-ok'></i> done</a>
+    </div>
+  </div>
+</template>

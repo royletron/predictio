@@ -1,3 +1,16 @@
+var winLoseDraw = function(home_score, away_score, side)
+{
+  if(home_score == away_score)
+    return 'draw'
+  if(side == 'home')
+    if(home_score > away_score)
+      return 'win'
+  if(side == 'away')
+    if(away_score > home_score)
+      return 'win'
+  return 'loss'
+}
+
 Template.fixtures.fixtures = function () {
   return Fixtures.find({}, {sort: {play_at: 1}});
 };
@@ -7,6 +20,19 @@ Template.fixtures.prediction_home = function(fixture) {
     return Predictions.findOne({owner: Meteor.userId(), fixture: fixture}).home_score
   else
     return ''
+}
+
+Template.fixtures.fixture_result = function(fixture) {
+  var prediction = Predictions.findOne({owner: Meteor.userId(), fixture: fixture});
+  var fixture = Fixtures.findOne({_id: fixture});
+  if(prediction == undefined)
+    return ''
+  else
+    if((prediction.home_score == fixture.score1) && (prediction.away_score == fixture.score2))
+      return '<span class="label label-success"><i class="glyphicon glyphicon-ok"></i> score</span>'
+    if(winLoseDraw(prediction.home_score, prediction.away_score, 'home') == winLoseDraw(fixture.score1, fixture.score2, 'home'))
+      return '<span class="label label-warning"><i class="glyphicon glyphicon-ok"></i> result</span>'
+  return '<span class="label label-danger"><i class="glyphicon glyphicon-remove"></i> wrong</span>'
 }
 
 Template.fixtures.fixture_open = function(event){
@@ -29,15 +55,15 @@ Template.fixtures.prediction_win = function(fixture, side) {
   var prediction = Predictions.findOne({owner: Meteor.userId(), fixture: fixture});
   if(prediction != undefined)
   {
-    if(prediction.home_score == prediction.away_score)
-      return 'label label-warning'
-    if(side == 'home')
-      if(prediction.home_score > prediction.away_score)
-        return 'label label-success'
-    if(side == 'away')
-      if(prediction.away_score > prediction.home_score)
-        return 'label label-success'
-    return 'label label-danger'
+    switch(winLoseDraw(prediction.home_score, prediction.away_score, side))
+    {
+      case 'win':
+        return 'label label-success';
+      case 'loss':
+        return 'label label-danger';
+      case 'draw':
+        return 'label label-warning'
+    }
   }
   else
   {

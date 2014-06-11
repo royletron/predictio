@@ -1,6 +1,6 @@
 <template name="fixtures">
   <div class="page-header">
-    <h1>Fixtures</h1>
+    <h1>Fixturez</h1>
   </div>
   {{#each fixtures}}
   <div class="row" style="margin-bottom:10px;">
@@ -25,7 +25,7 @@
       <img src="/packages/flag-sprites/flags/blank.gif" class="flag flag-{{getAlpha2Code team2_code team2_title}}" alt="{{team2_title}}" />
       <span class="{{prediction_win _id 'away'}}">{{team2_title}}</span>
     </div>
-    <div class="col-sm-2"><p class="muted">{{play_at_ago}}</p></div>
+    <div class="col-sm-2"><p class="muted">{{#if score1}}{{score1}} - {{score2}} {{{fixture_result _id}}}{{else}}{{play_at_ago}}{{/if}}</p></div>
   </div>
   {{/each}}
   <a id="saveButton" class="btn btn-primary">Save</a>

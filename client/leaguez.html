@@ -1,0 +1,25 @@
+<template name="league">
+  <div class="page-header">
+    <h1>Leaguez</h1>
+  </div>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th width="30">Scorez</th>
+        <th width="30">Resultz</th>
+        <th width="30">Pointz</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each users}}
+        <tr>
+          <td>{{name}}</td>
+          <td class="text-center">{{scores}}</td>
+          <td class="text-center">{{results}}</td>
+          <td class="text-center">{{points}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</template>
