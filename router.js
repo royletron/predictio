@@ -11,3 +11,11 @@ Router.map(function() {
 Router.configure({
   layoutTemplate: 'layout'
 })
+
+Router.onAfterAction(function() {
+  if(Meteor.user() == null)
+  {
+    Router.go('home');
+    toastr.error('Need to be logged in!')
+  }
+}, {except: 'home'});

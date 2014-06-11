@@ -6,10 +6,10 @@
 standard-app-packages
 autopublish
 insecure
-bootstrap-3
 accounts-password
 accounts-ui-bootstrap-3
 iron-router
 flag-sprites
 momentjs
 toastr
+bootswatch-lumen

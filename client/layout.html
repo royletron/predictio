@@ -1,8 +1,8 @@
 <template name="layout">
-  <div class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+  <div class="navbar navbar-default navbar-fixed-top " role="navigation">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">Roylz Spoilz</a>
+        <a class="navbar-brand" href="/"><img src="/logo.png" style="max-height:22px; margin-top:-8px;"/> Roylz Spoilz</a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
@@ -19,7 +19,7 @@
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container well well-sm">
     {{> yield}}
   </div>
 </template>

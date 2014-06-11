@@ -22,7 +22,7 @@ Template.profile.helpers({
 Template.profile.events({
   'click .done': function() {
     if (Meteor.user().profile.displayName) {
-      return Router.go('/');
+      toastr.success('Profile saved!')
     } else {
       return $('.errors').text('Display Name.');
     }
