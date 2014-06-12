@@ -83,6 +83,7 @@ Template.fixtures.getAlpha2Code = function(alpha3, name) {
 Template.fixtures.events({
   'click #saveButton': function(event){
     Session.get('currentUser');
+    $('#saveButton').button('loading');
     _.each(Fixtures.find({}).fetch(), function(item, idx){
       if(Predictions.findOne({owner: Meteor.userId(), fixture: item._id}) != undefined)
         Predictions.remove({_id: Predictions.findOne({owner: Meteor.userId(), fixture: item._id})._id});
@@ -110,6 +111,7 @@ Template.fixtures.events({
         $away.parent().removeClass('has-error')
       }
     });
+    $('#saveButton').button('reset');
     toastr.success('Saved your predictions.')
   }
 })
