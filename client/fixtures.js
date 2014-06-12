@@ -11,10 +11,6 @@ var winLoseDraw = function(home_score, away_score, side)
   return 'loss'
 }
 
-Template.fixtures.fixtures = function () {
-  return Fixtures.find({}, {sort: {play_at: 1}});
-};
-
 Template.fixtures.prediction_home = function(fixture) {
   if(Predictions.findOne({owner: Meteor.userId(), fixture: fixture}) != undefined)
     return Predictions.findOne({owner: Meteor.userId(), fixture: fixture}).home_score

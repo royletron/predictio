@@ -1,6 +1,8 @@
 Router.map(function() {
   this.route('home', {path: '/'});
-  this.route('fixtures', {path: '/fixturez'});
+  this.route('fixtures', {path: '/fixturez', data: function(){
+    return {fixtures: Fixtures.find({}, {sort: {play_at: 1}})};
+  }});
   this.route('league', {path: '/leaguez'});
   this.route('profile', {path: '/profilez', data: function() {
     console.log(Meteor.user());
