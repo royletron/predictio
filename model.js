@@ -45,9 +45,3 @@ Predictions.allow({
     return true;
   }
 })
-
-Meteor.methods({
-  removeAllFixtures: function() {
-    return Fixtures.remove({});
-  }
-});
