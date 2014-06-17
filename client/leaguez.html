@@ -6,6 +6,7 @@
   <table class="table table-striped">
     <thead>
       <tr>
+        <th width="20">#</th>
         <th>User</th>
         <th width="30">Scorez</th>
         <th width="30">Resultz</th>
@@ -13,12 +14,13 @@
       </tr>
     </thead>
     <tbody>
-      {{#each users}}
+      {{#each key_value users}}
         <tr>
-          <td>{{name}}</td>
-          <td class="text-center">{{scores}}</td>
-          <td class="text-center">{{results}}</td>
-          <td class="text-center">{{points}}</td>
+          <td>{{key}}</td>
+          <td>{{value.name}}</td>
+          <td class="text-center">{{value.scores}}</td>
+          <td class="text-center">{{value.results}}</td>
+          <td class="text-center">{{value.points}}</td>
         </tr>
       {{/each}}
     </tbody>

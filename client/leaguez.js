@@ -1,3 +1,11 @@
+Handlebars.registerHelper('key_value', function(context, options) {
+  var result = [];
+  _.each(context, function(value, key, list){
+    result.push({key:key+1, value:value});
+  })
+  return result;
+});
+
 var winLoseDraw = function(home_score, away_score, side)
 {
   if(home_score == away_score)
