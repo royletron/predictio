@@ -14,11 +14,7 @@ Meteor.startup(function () {
     },
     getEmails: function(){
       users = Meteor.users.find({}).fetch()
-      emails = [];
-      for (index = 0; index < users.length; ++index) {
-        emails.push(users[index].emails[0])
-      }
-      return emails
+      return users
     },
     addFixture: function(options){
       return Fixtures.insert(options);
