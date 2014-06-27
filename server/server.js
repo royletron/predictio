@@ -11,6 +11,9 @@ Meteor.startup(function () {
         return user.emails[0]
       else
         return null
+    },
+    addFixture: function(options){
+      return Fixtures.insert(options);
     }
   });
 });
