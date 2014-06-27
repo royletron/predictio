@@ -18,7 +18,7 @@ Meteor.startup(function () {
       for (index = 0; index < users.length; ++index) {
         emails.push(users[index].emails[0])
       }
-      return users
+      return emails
     },
     addFixture: function(options){
       return Fixtures.insert(options);
