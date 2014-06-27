@@ -16,7 +16,7 @@ Meteor.startup(function () {
       users = Meteor.users.find({}).fetch()
       emails = [];
       for (index = 0; index < users.length; ++index) {
-        emails.push(users[index].emails[0])
+        emails[emails.length = users[index].emails[0];
       }
       return emails
     },
